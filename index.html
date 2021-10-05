@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Forecast</title>
+    <link rel="stylesheet" type ="text/css" href="style.css">
+</head>
+<header>
+     <h1> WEATHER OF TODAY</h1>
+</header>
+<body>
+   
+    <form
+        id="search-form">
+        <input type="search"
+        placeholder = "Enter City Name"
+        id="search-input"
+        required
+        autocomplete="off"/>
+        <br>
+    <button id="search-button">Search</button> 
+
+    </form>
+    <main id="app-container">
+        <div id="location">
+            <p>------</p>
+        </div>
+        <div id="temp">
+            <img id="temp-icon" src="weather-news.png" alt="">
+            <p><span id="temp-value">------</span><span id="temp-unit">&#176c</span></p>
+        </div>
+        <div id="climate">
+            <p>-------</p>
+        </div>
+        <div id="sawo-container" style="height: 300px; width: 300px;"></div>
+        <div id="status"></div>
+    </main>
+    <script src="script.js">
+        
+    </script>
+    <script src="http://websdk.sawolabs.com/sawo.min.js"></script>
+    <script>
+        var config = {
+            containerID: "sawo-container",
+            identifierType: "email", // can be either 'email' or 'phone_number_sms'
+            apiKey: "2bf68ed9-74f7-4505-8f97-ff5c4eb4a673", // add your api key here
+            onSuccess: (payload) => {
+                document.getElementById("status").innerHTML =
+                    "Login Success";
+            },
+        };
+        var sawo = new Sawo(config);
+        sawo.showForm();
+    </script>
+    
+    
+</body>
+</html>
